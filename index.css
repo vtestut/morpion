@@ -1,0 +1,128 @@
+@font-face {
+    font-family: 'one_piece_font';
+    src: url('font/one_piece_font.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+#game-title {
+    text-align: center;
+    font-family: 'one_piece_font', sans-serif;
+    font-size: 2.5em;
+    color: #333;
+    text-align: center;
+    margin-top: 20px;
+}
+
+body {
+    font-family: Arial, sans-serif; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f4f4f9;
+}
+
+#game-container {
+    text-align: center;
+}
+
+#game-board {
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    grid-template-rows: repeat(3, 100px);
+    gap: 1px;
+    margin: 20px auto;
+    width: 300px;
+    height: 300px;
+    background-image: url('img/grid.png');
+    background-size: cover;
+    border-radius: 15px; 
+    overflow: hidden;
+}
+
+.cell {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.8s;
+}
+
+.cell:hover {
+    background-color: rgba(57, 173, 219, 0.6);
+}
+
+.cell.x::before {
+    content: "";
+    background-image: url('img/x.png');
+    background-size: contain;
+    width: 80px;
+    height: 80px;
+}
+
+.cell.o::before {
+    content: "";
+    background-image: url('img/o.png');
+    background-size: contain;
+    width: 80px;
+    height: 80px;
+}
+
+#message {
+    font-size: 1.2em;
+    margin-top: 1px;
+    color: #333;
+}
+
+#new-game-button, #rematch-button {
+    display: block;
+    margin: 10px auto;
+    padding: 10px 20px;
+    font-size: 1em;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+#new-game-button:hover, #rematch-button:hover {
+    background-color: #555;
+}
+
+#scoreboard {
+    margin-top: 10px;
+    text-align: center;
+    font-size: 1.2em;
+}
+
+#scoreboard p {
+    margin: 5px 0;
+}
+
+@keyframes blink {
+    0%, 100% { background-color: #4CAF50; }
+    50% { background-color: #70cf73; }
+}
+
+.cell.winning-cell {
+    animation: blink 1s ease-in-out infinite;
+}
+
+/*
+selecteur {
+    propriete: valeur;
+}
+
+- selecteur de type (ex : body) : applique le style à tous les elements de ce type
+- selecteur d' id (ex : #game-container) : applique le style seulement aux elements qui ont cet id
+- slcteur de classe (ex : .cell) : applique le style a tous les elements qui ont cette classe
+
+pseudo-class (ex .cell:hover) : permet d'appliquer un style quand l'element est dans un etat particulier (hover, active, focus...)
+pseudo-element (ex .cell::before) : permet d'appliquer un style a une sous partie d'un element ou 
+d'ajouter du contenu, s'affiche en fonctions de regles definies mais ils existent pas reellement 
+dans le HTML c a d qu'on peut pas les selectionner ou les manipuler avec JS 
+(ex: "::selection" modifie le la couleur du fond d'un text selectionne)
+*/
+
